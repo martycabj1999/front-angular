@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ProductsService } from '../../services/products.service'
 
 @Component({
   selector: 'app-product',
@@ -8,8 +9,18 @@ import { Component, Input } from '@angular/core';
 })
 export class ProductComponent {
 
-  @Input() products: any[] = []
+  newProduct: any[] = []
 
-  constructor() { }
+  constructor(private products: ProductsService) {
+
+    let id = window.location.href.split('/')[5]
+
+    this.newProduct = this.products.getProduct(id);
+
+    /* this.products.getProduct(id).subscribe((data: any) => {
+      this.newProducts = data;
+      this.loading = false;
+    }); */
+  }
 
 }

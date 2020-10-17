@@ -15,10 +15,13 @@ export class HomeComponent {
   constructor(private products: ProductsService) {
     this.loading = true;
 
-    this.products.getProducts().subscribe((data: any) => {
+    this.newProducts = this.products.getProducts();
+
+
+    /* this.products.getProducts().subscribe((data: any) => {
       this.newProducts = data;
       this.loading = false;
-    });
+    }); */
 
   }
 

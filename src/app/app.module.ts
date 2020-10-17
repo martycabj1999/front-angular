@@ -11,7 +11,9 @@ import { ProductComponent } from './components/product/product.component';
 
 import { ROUTES } from './app.routes';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { LoadingComponent } from './components/loading/loading.component'
+import { LoadingComponent } from './components/loading/loading.component';
+import { FilterComponent } from './components/filter/filter.component';
+import { ProductsComponent } from './components/products/products.component'
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { LoadingComponent } from './components/loading/loading.component'
     ProductComponent,
     NavbarComponent,
     LoadingComponent,
+    FilterComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,

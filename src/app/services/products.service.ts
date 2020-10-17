@@ -11,35 +11,74 @@ export class ProductsService {
 
   getProducts() {
 
-    /*return [
+    return [
       {
         "id": 1,
         "image": "https://picsum.photos/id/566/640/480",
-        "title": "The Awakening",
+        "name": "The Awakening",
         "price": 33.5,
-        "author": "Kate Chopin"
+        "category": "Kate Chopin",
+        "description": "DOUUUUU"
       },
       {
         "id": 2,
         "image": "https://picsum.photos/id/46/640/480",
-        "title": "Outliers",
+        "name": "Outliers",
         "price": 99.9,
-        "author": "Malcolm Gladwell"
+        "category": "Malcolm Gladwell",
+        "description": "DOUUUUU"
       },
       {
         "id": 3,
         "image": "https://picsum.photos/id/863/640/480",
-        "title": "City of Glass",
+        "name": "City of Glass",
         "price": 83.5,
-        "author": "Paul Auster"
+        "category": "Paul Auster",
+        "description": "DOUUUUU"
+      },
+      {
+        "id": 1,
+        "image": "https://picsum.photos/id/566/640/480",
+        "name": "The Awakening",
+        "price": 33.5,
+        "category": "Kate Chopin",
+        "description": "DOUUUUU"
+      },
+      {
+        "id": 2,
+        "image": "https://picsum.photos/id/46/640/480",
+        "name": "Outliers",
+        "price": 99.9,
+        "category": "Malcolm Gladwell",
+        "description": "DOUUUUU"
+      },
+      {
+        "id": 3,
+        "image": "https://picsum.photos/id/863/640/480",
+        "name": "City of Glass",
+        "price": 83.5,
+        "category": "Paul Auster",
+        "description": "DOUUUUU"
       }
     ]
 
-    const headers = new HttpHeaders({
-      
-    }) */
-
     return this.http.get('http://localhost:3000/products');
+    return this.http.get('http://localhost:3000/productsid');
+
+  }
+
+  getProduct(id: Number) {
+
+    return {
+      "id": 1,
+      "image": "https://picsum.photos/id/566/640/480",
+      "name": "The Awakening",
+      "price": 33.5,
+      "category": "Kate Chopin",
+      "description": "DOUUUUU"
+    }
+
+    return this.http.get('http://localhost:3000/products/' + id);
 
   }
 
