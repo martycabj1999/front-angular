@@ -10,8 +10,8 @@
                 </div>
                 <div class="form-group">
                     <h5>Precio $</h5>
-                    <input #min type="number" class="form-control" placeholder="Monto minimo">
-                    <input #max type="number" class="mt-2 form-control" placeholder="Monto maximo">
+                    <input #min min="0" type="number" class="form-control" placeholder="Monto minimo">
+                    <input #max min="1" type="number" class="mt-2 form-control" placeholder="Monto maximo">
                     <span class="mt-2 badge badge-danger">{{validate}}</span>
                     <button (click)="filter(min.value, max.value)" class="mt-2 btn btn-success btn-block">Aplicar filtro</button>
                 </div>

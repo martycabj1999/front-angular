@@ -11,7 +11,7 @@ export class ProductsService {
 
   getProducts() {
 
-    return [
+    /*return [
       {
         "id": 1,
         "image": "https://picsum.photos/id/566/640/480",
@@ -60,23 +60,22 @@ export class ProductsService {
         "category": "Paul Auster",
         "description": "DOUUUUU"
       }
-    ]
+    ]*/
 
     return this.http.get('http://localhost:3000/products');
-    return this.http.get('http://localhost:3000/productsid');
 
   }
 
   getProduct(id: Number) {
 
-    return {
+    /*return {
       "id": 1,
       "image": "https://picsum.photos/id/566/640/480",
       "name": "The Awakening",
       "price": 33.5,
       "category": "Kate Chopin",
       "description": "DOUUUUU"
-    }
+    }*/
 
     return this.http.get('http://localhost:3000/products/' + id);
 

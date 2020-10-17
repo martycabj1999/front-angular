@@ -18,16 +18,16 @@ export class HomeComponent {
   constructor(private products: ProductsService) {
     this.loading = true;
 
-    this.newProducts = this.products.getProducts();
+    /*this.newProducts = this.products.getProducts();
 
     let cat = []
     this.newProducts.map(product => {
       cat.push(product.category)
     });
 
-    this.categories = cat.filter(this.onlyUnique);
+    this.categories = cat.filter(this.onlyUnique);*/
 
-    /* this.products.getProducts().subscribe((data: any) => {
+    this.products.getProducts().subscribe((data: any) => {
       this.newProducts = data;
       let cat = []
       this.newProducts.map(product => {
@@ -36,7 +36,7 @@ export class HomeComponent {
 
       this.categories = cat.filter(this.onlyUnique);
       this.loading = false;
-    }); */
+    });
 
   }
 
@@ -50,17 +50,23 @@ export class HomeComponent {
     let productsSearch = []
 
     if (product !== '') {
-      currentProducts = this.newProducts;
-      productsSearch = currentProducts.filter(p => p.name.toLowerCase().indexOf(product) !== -1)
+      this.products.getProducts().subscribe((data: any) => {
+        currentProducts = data;
+        productsSearch = currentProducts.filter(p => p.name.toLowerCase().indexOf(product) !== -1)
+        
+        if (productsSearch.length == 0) {
+          return this.empty = true
+        }
 
+        return this.newProducts = productsSearch;
 
-      if (productsSearch.length == 0) {
-        return this.empty = true
-      }
-
-      return this.newProducts = productsSearch;
+      });
     } else {
-      this.newProducts = this.products.getProducts();
+      this.products.getProducts().subscribe((data: any) => {
+        console.log(data)
+        this.empty = false
+        return this.newProducts = data;
+      });
     }
   }
 
@@ -86,32 +92,36 @@ export class HomeComponent {
       }, 1000);
     }
 
-    let products = this.products.getProducts();
-    let filterProducts = []
+    this.products.getProducts().subscribe((data: any) => {
+      let products = data
+      let filterProducts = []
 
-    products.map(product => {
-      if (product.price > parseFloat(min) && product.price < parseFloat(max)) {
-        filterProducts.push(product)
+      products.map(product => {
+        if (product.price > parseFloat(min) && product.price < parseFloat(max)) {
+          filterProducts.push(product)
+        }
+      })
+
+      if (filterProducts.length == 0) {
+        return this.empty = true
       }
-    })
 
-    if (filterProducts.length == 0) {
-      return this.empty = true
-    }
-
-    return this.newProducts = filterProducts;
+      return this.newProducts = filterProducts;
+    });
 
   }
 
   categoryFilter(category: String) {
 
-    let products = this.products.getProducts();
+    this.products.getProducts().subscribe((data: any) => {
+      let products = data;
+      if (!category) {
+        return this.newProducts = products
+      }
 
-    if (!category) {
-      return this.newProducts = products
-    }
+      return this.newProducts = products.filter(p => p.category.indexOf(category) !== -1)
+    });
 
-    return this.newProducts = products.filter(p => p.category.indexOf(category) !== -1)
   }
 
 }

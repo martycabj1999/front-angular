@@ -15,12 +15,12 @@ export class ProductComponent {
 
     let id = window.location.href.split('/')[5]
 
-    this.newProduct = this.products.getProduct();
+    //this.newProduct = this.products.getProduct(id);
 
-    /* this.products.getProduct(id).subscribe((data: any) => {
-      this.newProducts = data;
+    this.products.getProduct(id).subscribe((data: any) => {
+      this.newProduct = data;
       this.loading = false;
-    }); */
+    });
   }
 
 }
