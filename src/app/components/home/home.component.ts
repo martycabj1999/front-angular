@@ -15,15 +15,10 @@ export class HomeComponent {
   constructor(private products: ProductsService) {
     this.loading = true;
 
-    setTimeout(() => {
-      this.newProducts = this.products.getProducts();
-      this.loading = false;
-    }, 1000);
-
-    /* this.products.getProducts().subscribe((data: any) => {
-      console.log(data)
+    this.products.getProducts().subscribe((data: any) => {
       this.newProducts = data;
-    }) */
+      this.loading = false;
+    });
 
   }
 

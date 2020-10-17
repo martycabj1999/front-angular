@@ -11,7 +11,7 @@ export class ProductsService {
 
   getProducts() {
 
-    return [
+    /*return [
       {
         "id": 1,
         "image": "https://picsum.photos/id/566/640/480",
@@ -35,11 +35,11 @@ export class ProductsService {
       }
     ]
 
-    /*  const headers = new HttpHeaders({
+    const headers = new HttpHeaders({
       
     }) */
 
-    return this.http.get('http://localhost:5000/products');
+    return this.http.get('http://localhost:3000/products');
 
   }
 

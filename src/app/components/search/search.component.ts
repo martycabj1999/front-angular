@@ -14,7 +14,7 @@ export class SearchComponent {
   constructor(private productsService: ProductsService) { }
 
   search(product: string) {
-    let products = Object.values(this.productsService.getProducts());
+    let products = this.productsService.getProducts();
 
     this.searchProducts = products.filter(p => p.title.toLowerCase().indexOf(product) !== -1)
 
